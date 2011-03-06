@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, main!</string>
+    <string name="app_name">first</string>
+    <string name="about">欢迎使用稚菊微博客户端，如果在使用中有任何问题，男性请咨询小龙B，女性请赴1120室咨询gintama</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_set">设置</string>
+    <string name="menu_account">帐号</string>
+    <string name="menu_back">意见反馈</string>
+    <string name="title">稚菊微博</string>
+    <string name="login">登录</string>
+</resources>
