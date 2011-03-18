@@ -1,0 +1,96 @@
+下个星期五之前写完
+地址
+https://micro-bloggingonandroid.googlecode.com/svn/trunk/OurSinaWeiboSDK/SinaWeibo4Android_origin.rar
+
+
+王景
+获取下行数据集(timeline)接口
+statuses/public_timeline 获取最新的公共微博消息
+statuses/friends_timeline 获取当前登录用户及其所关注用户的最新微博消息 (别名: statuses/home_timeline)
+statuses/user_timeline 获取当前登录用户发布的微博消息列表
+statuses/mentions 获取@当前用户的微博列表
+statuses/comments_timeline 获取当前用户发送及收到的评论列表
+statuses/comments_by_me 获取当前用户发出的评论
+statuses/comments_to_me 获取当前用户收到的评论
+statuses/comments 根据微博消息ID返回某条微博消息的评论列表
+statuses/counts 批量获取一组微博的评论数及转发数
+statuses/repost_timeline 返回一条原创微博的最新n条转发微博信息 New!
+statuses/repost_by_me 返回用户转发的最新n条微博信息 New!
+statuses/unread 获取当前用户未读消息数
+statuses/reset_count 未读消息数清零接口
+emotions 表情接口，获取表情列表
+
+
+郑璨
+微博访问接口
+statuses/show 根据ID获取单条微博信息内容
+user/statuses/id 根据微博ID和用户ID跳转到单条微博页面
+statuses/update 发布一条微博信息Updated!
+statuses/upload 上传图片并发布一条微博信息
+statuses/destroy 删除一条微博信息
+statuses/repost 转发一条微博信息Updated!
+statuses/comment 对一条微博信息进行评论Updated!
+statuses/comment_destroy/:id 删除当前用户的微博评论信息
+statuses/comment/destroy_batch 批量删除当前用户的微博评论信息
+statuses/reply 回复微博评论信息Updated!
+用户接口
+users/show 根据用户ID获取用户资料（授权用户）
+statuses/friends 获取用户关注列表及每个关注用户最新一条微博
+statuses/followers 获取用户粉丝列表及及每个粉丝用户最新一条微博
+users/hot 获取系统推荐用户
+user/friends/update_remark更新当前登录用户所关注的某个好友的备注信息New!
+users/suggestions 返回当前用户可能感兴趣的用户 Beta
+私信接口
+direct_messages 获取当前用户最新私信列表
+direct_messages/sent 获取当前用户发送的最新私信列表
+direct_messages/new 发送一条私信
+direct_messages/destroy/:id 删除一条私信
+direct_messages/destroy_batch 批量删除私信
+关注接口
+friendships/create 关注某用户
+friendships/destroy 取消关注
+friendships/exists 是否关注某用户(推荐使用friendships/show)
+friendships/show 获取两个用户关系的详细情况
+
+
+郑辰
+话题接口Beta!
+trends 获取某人的话题
+trends/statuses 获取某一话题下的微博
+trends/follow 关注某一个话题
+trends/destroy 取消关注的某一个话题
+trends/hourly 按小时返回热门话题
+trends/daily 按日期返回热门话题。返回某一日期的话题
+trends/weekly 按周返回热门话题。返回某一日期之前某一周的话题
+Social Graph接口
+friends/ids 获取用户关注对象uid列表
+followers/ids 获取用户粉丝对象uid列表
+隐私设置接口[NEW]
+account/update_privacy 设置隐私信息
+account/get_privacy 获取隐私信息
+黑名单接口 [NEW]
+blocks/create 将某用户加入黑名单
+blocks/destroy 将某用户移出黑名单
+blocks/exists 检测某用户是否是黑名单用户
+blocks/blocking 列出黑名单用户(输出用户详细信息)
+blocks/blocking/ids 列出分页黑名单用户（只输出id）
+
+
+王晓龙
+用户标签接口[NEW]
+tags 返回指定用户的标签列表
+tags/create 添加用户标签
+tags/suggestions 返回用户感兴趣的标签
+tags/destroy 删除标签
+tags/destroy_batch 批量删除标签
+账号接口
+account/verify_credentials 验证当前用户身份是否合法
+account/rate_limit_status 获取当前用户API访问频率限制
+account/end_session 当前用户退出登录
+account/update_profile_image 更改头像
+account/update_profile 更改资料
+收藏接口
+favorites 获取当前用户的收藏列表
+favorites/create 添加收藏
+favorites/destroy 删除当前用户收藏的微博信息
+favorites/destroy_batch 批量删除收藏的微博信息
