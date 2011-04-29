@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+              <RelativeLayout android:id="@+id/rlDigest"
+                android:background="@drawable/panel_bg" android:layout_width="fill_parent"
+                android:layout_height="100.0dip" android:layout_margin="10.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="#ff7d899d"
+                    android:gravity="center_vertical" android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip"
+                    android:text="地址"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff373737"
+                    android:id="@+id/tvAddress_content" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginLeft="10.0dip"
+                    android:layout_toRightOf="@id/tvAddress" android:layout_alignTop="@id/tvAddress" />
+                <View android:id="@+id/vHDivider" android:background="@drawable/horizontal_separation_line_repeat"
+                    android:layout_width="fill_parent" android:layout_height="1.0dip"
+                    android:layout_centerVertical="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff7d899d"
+                    android:gravity="center_vertical" android:id="@+id/tvAccount_info"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="账户信息" android:layout_below="@+id/vHDivider"
+                    android:layout_alignLeft="@+id/tvAddress"
+                    android:layout_alignParentBottom="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff373737"
+                    android:gravity="center_vertical" android:id="@+id/tvAccount_info_content"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip" android:layout_marginBottom="12.0dip"
+                    android:singleLine="true" android:layout_toRightOf="@+id/tvAccount_info"
+                    android:layout_alignBottom="@+id/tvAccount_info" />
+            </RelativeLayout>
+            <RelativeLayout android:background="@drawable/panel_bg"
+                android:layout_width="fill_parent" android:layout_height="130.0dip"
+                android:layout_margin="10.0dip">
+                <View android:id="@+id/vVDivider1" android:background="@drawable/vertical_separation_line_repeat"
+                    android:layout_width="1.0dip" android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true" />
+                <View android:id="@+id/vHDivider2" android:background="@drawable/horizontal_separation_line_repeat"
+                    android:layout_width="fill_parent" android:layout_height="1.0dip"
+                    android:layout_centerVertical="true" />
+                <RelativeLayout android:id="@+id/llAttention"
+                    android:background="@drawable/bg_panel_above_left"
+                    android:clickable="true" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_toLeftOf="@+id/vVDivider1"
+                    android:layout_above="@+id/vHDivider2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true">
+                    <TextView android:gravity="center" android:id="@+id/tvAttention_count"
+                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip" android:text="0"
+                        android:layout_centerHorizontal="true"
+                        />
+                    <TextView android:gravity="center" android:id="@+id/tvAttention"
+                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAttention_count"
+                        android:layout_centerHorizontal="true"
+                        android:text="关注"/>
+                </RelativeLayout>
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/rlWeibo" android:background="@drawable/bg_panel_above_right"
+                    android:clickable="true" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_toRightOf="@+id/vVDivider1"
+                    android:layout_above="@+id/vHDivider2"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true">
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvWeibo_count" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:layout_marginTop="10.0dip"
+                        android:text="0" />
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvTopic" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:text="微博"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/llFans" android:background="@drawable/bg_panel_below_left"
+                    android:clickable="true" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_toLeftOf="@id/vVDivider1"
+                    android:layout_below="@+id/vHDivider2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true">
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvFans_count" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:layout_marginTop="10.0dip"
+                        android:text="0"  />
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvFans" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:text="粉丝"
+                        />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical"
+                    android:id="@+id/llTopic" android:background="@drawable/bg_panel_below_right"
+                    android:clickable="true" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_toRightOf="@id/vVDivider1"
+                    android:layout_below="@+id/vHDivider2"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true">
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvTopic_count" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:layout_marginTop="10.0dip"
+                        android:text="0" />
+                    <TextView android:gravity="center" android:layout_gravity="center_horizontal"
+                        android:id="@+id/tvTopic" android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" android:text="话题"
+                         />
+                </LinearLayout>
+            </RelativeLayout>
+  
+</LinearLayout>
