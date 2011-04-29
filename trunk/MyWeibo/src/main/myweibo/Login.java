@@ -1,11 +1,9 @@
 package main.myweibo;
 
-import main.logic.DataHelper;
 import main.logic.InitLogin;
 import main.logic.InitLoginList;
 import main.logic.LoginGo;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

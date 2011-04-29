@@ -27,9 +27,8 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import weibo.constant.Constant;
+import android.util.Log;
 
 /**
  * 

@@ -5,9 +5,6 @@ import java.util.List;
 
 import main.myweibo.R;
 import main.myweibo.WeiboListAdapter;
-
-import org.json.JSONException;
-
 import weibo.constant.Constant;
 import weibo.status.Friends_Timeline;
 import android.app.Activity;

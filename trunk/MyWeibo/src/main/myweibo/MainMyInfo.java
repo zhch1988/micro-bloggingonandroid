@@ -3,7 +3,6 @@ package main.myweibo;
 import main.logic.GetMainMyInfo;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainMyInfo extends Activity {
