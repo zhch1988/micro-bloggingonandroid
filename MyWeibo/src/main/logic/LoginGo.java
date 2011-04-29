@@ -2,9 +2,8 @@ package main.logic;
 
 import java.util.List;
 
-import weibo.constant.Constant;
-
 import main.myweibo.Main;
+import weibo.constant.Constant;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

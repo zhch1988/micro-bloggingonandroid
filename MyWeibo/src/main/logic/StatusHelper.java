@@ -3,15 +3,12 @@ package main.logic;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import main.myweibo.R;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.ImageSpan;
 
 
 public class StatusHelper {

@@ -11,10 +11,12 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -26,9 +28,10 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
-import android.util.Log;
 
-import weibo.constant.*;
+import weibo.constant.Constant;
+import weibo.constant.Counts;
+import android.util.Log;
 
 /**
  * @author Íõ¾°

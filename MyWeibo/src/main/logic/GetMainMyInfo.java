@@ -5,7 +5,6 @@ import weibo.constant.User;
 import weibo.user_interface.Users_show;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
 
 public class GetMainMyInfo extends AsyncTask<Void, Void, User> {

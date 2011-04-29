@@ -1,7 +1,6 @@
 package main.logic;
 
 import main.myweibo.Main;
-import main.myweibo.Write;
 import weibo.statuses_interface.Statuses_update;
 import android.app.Activity;
 import android.content.Context;
