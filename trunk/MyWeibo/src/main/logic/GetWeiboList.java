@@ -32,36 +32,34 @@ public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 	protected Integer doInBackground(Void... params) {
 		// TODO Auto-generated method stub
 		
-		try {
+
 			Friends_Timeline ft = new Friends_Timeline();
 			List<weibo.constant.Status> status = ft.getFriends_Timeline();
-			//bitmaps = null;
-			publish_status= new ArrayList<weibo.constant.Status>();
-			adapter = null;
-			for(int i=0;i<status.size();i++){
-				weibo.constant.Status aStatus = status.get(i);
-				String url =aStatus.getUser_Author().getProfile_image_url();
-				bitmaps[i][0]=main.logic.DataHelper.returnBitMap(url);
-				url =aStatus.getThumbnail_pic();
-				bitmaps[i][1]=main.logic.DataHelper.returnBitMap(url);
-				if(aStatus.getRetweeted_status()!=null){
-					url = aStatus.getRetweeted_status().getThumbnail_pic();
-					bitmaps[i][2]=main.logic.DataHelper.returnBitMap(url);
+			if(status!=null){
+				publish_status= new ArrayList<weibo.constant.Status>();
+				adapter = null;
+				for(int i=0;i<status.size();i++){
+					weibo.constant.Status aStatus = status.get(i);
+					String url =aStatus.getUser_Author().getProfile_image_url();
+					bitmaps[i][0]=main.logic.DataHelper.returnBitMap(url);
+					url =aStatus.getThumbnail_pic();
+					bitmaps[i][1]=main.logic.DataHelper.returnBitMap(url);
+					if(aStatus.getRetweeted_status()!=null){
+						url = aStatus.getRetweeted_status().getThumbnail_pic();
+						bitmaps[i][2]=main.logic.DataHelper.returnBitMap(url);
+					}
+					else{
+						bitmaps[i][2]=null;
+					}
+					publish_status.add(aStatus);
+					
+					this.publishProgress();
 				}
-				else{
-					bitmaps[i][2]=null;
-				}
-				publish_status.add(aStatus);
-				
-				this.publishProgress();
+				return 1;
 			}
-			return 1;
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return 0;
-		}
-		
+			else{
+				return 0;
+			}
 	}
 
 	@Override
@@ -73,7 +71,7 @@ public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 		else{
 			Log.v("Get weibo LIST", "ERROR");
 		}
-		super.onPostExecute(result);
+		//super.onPostExecute(result);
 	}
 
 	@Override
