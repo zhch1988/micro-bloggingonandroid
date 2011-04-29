@@ -133,9 +133,9 @@ public class Comment_Counts {
 			count = new ArrayList<Counts>(array.length());
 			for (int i = 0; i < array.length(); i++)
 				count.add(new Counts(array.getJSONObject(i)));
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 		return count;
 	}

@@ -150,9 +150,9 @@ public class Emotions_Get {
 			emotions = new ArrayList<Emotions>(array.length());
 			for (int i = 0; i < array.length(); i++)
 				emotions.add(new Emotions(array.getJSONObject(i)));
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+		return null;
 		}
 
 		return emotions;

@@ -119,8 +119,8 @@ public class Mentions {
 		}
 	}
 
-	public List<Status> getMentions() throws JSONException {
-
+	public List<Status> getMentions() {
+try{
 		JSONArray data = new JSONArray(result);
 		int size = data.length();
 		List<Status> sta = new ArrayList<Status>(size);
@@ -129,6 +129,8 @@ public class Mentions {
 			Log.v("mentions", sta.get(i).toString());
 		}
 		return sta;
-
+}catch(Exception e){
+	return null;
+}
 	}
 }

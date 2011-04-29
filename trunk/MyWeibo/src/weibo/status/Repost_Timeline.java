@@ -130,23 +130,20 @@ public class Repost_Timeline {
 		}
 	}
 
-	public List<Status> getRepost_Timeline() throws JSONException {
+	public List<Status> getRepost_Timeline() {
 		if (result == "2Ble") {
 			return null;
 		} else {
-
-			JSONArray array = new JSONArray(result);
-			status = new ArrayList<Status>(array.length());
-			for (int i = 0; i < array.length(); i++) {
-				try {
+			try {
+				JSONArray array = new JSONArray(result);
+				status = new ArrayList<Status>(array.length());
+				for (int i = 0; i < array.length(); i++) {
 					status.add(new Status(array.getJSONObject(i)));
 					Log.v("user", status.get(i).toString());
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 
 				}
-
+			} catch (Exception e) {
+				return null;
 			}
 		}
 		return status;

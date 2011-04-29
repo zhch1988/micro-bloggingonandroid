@@ -35,7 +35,7 @@ import android.util.Log;
 
 public class Comment_ByMe {
 	List<Comment> comment;
-	String result;
+	String result=null;
 
 	public Comment_ByMe() {
 		String url = "http://api.t.sina.com.cn/statuses/comments_by_me.json";
@@ -121,8 +121,8 @@ public class Comment_ByMe {
 	 * @return 返回一个 Comment类的List
 	 * @throws JSONException
 	 */
-	public List<Comment> getComment_ByMe() throws JSONException {
-
+	public List<Comment> getComment_ByMe()  {
+try{
 		JSONArray data = new JSONArray(result);
 		int size = data.length();
 		List<Comment> sta = new ArrayList<Comment>(size);
@@ -131,6 +131,10 @@ public class Comment_ByMe {
 			Log.v("comment_byme", sta.get(i).toString());
 		}
 		return sta;
+		}catch(Exception e){
+			return null;
+		}
+
 
 	}
 
