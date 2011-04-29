@@ -22,7 +22,7 @@ public class Main extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.weibolist);
 		ButTest = (ImageButton) this.findViewById(R.id.refreshBtn);
 		write = (ImageButton) this.findViewById(R.id.writeBtn);
 		TextView text = (TextView) this.findViewById(R.id.showName);
