@@ -127,9 +127,8 @@ public class Unread_Show {
 		try {
 			JSONObject json = new JSONObject(result);
 			unread = new Unread(json);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			return null;
 		}
 		return unread;
 

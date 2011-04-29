@@ -124,8 +124,8 @@ public class Comment_Timeline {
 	 * @return 返回一个 Comment类的List
 	 * @throws JSONException
 	 */
-	public List<Comment> getComment_Timeline() throws JSONException {
-
+	public List<Comment> getComment_Timeline() {
+try{
 		JSONArray data = new JSONArray(result);
 		int size = data.length();
 		List<Comment> sta = new ArrayList<Comment>(size);
@@ -134,6 +134,8 @@ public class Comment_Timeline {
 			Log.v("comment", sta.get(i).toString());
 		}
 		return sta;
-
+}catch (Exception e){
+	return null;
+}
 	}
 }

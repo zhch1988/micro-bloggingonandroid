@@ -122,8 +122,8 @@ public class Comment_One {
 		}
 	}
 
-	public List<Comment> getComment_One() throws JSONException {
-
+	public List<Comment> getComment_One()  {
+try{
 		JSONArray data = new JSONArray(result);
 		int size = data.length();
 		List<Comment> sta = new ArrayList<Comment>(size);
@@ -132,6 +132,8 @@ public class Comment_One {
 			Log.v("comment", sta.get(i).toString());
 		}
 		return sta;
-
+}catch(Exception e){
+	return null;
+}
 	}
 }

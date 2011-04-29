@@ -133,10 +133,10 @@ public class Reset_Unread_Count {
 			JSONObject json = new JSONObject(result);
 			if (!json.isNull("result"))
 				res = json.getString("result");
-		} catch (JSONException e) {
+		} catch (Exception e) {
 
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		}
 		if (result == "2Ble") {
 			return false;

@@ -129,9 +129,9 @@ public class User_Timeline {
 				statu.add(new Status(data.getJSONObject(i)));
 				Log.v("user", statu.get(i).toString());
 			}
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 
 		return statu;

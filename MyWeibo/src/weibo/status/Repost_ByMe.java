@@ -127,9 +127,9 @@ public class Repost_ByMe {
 			status = new ArrayList<Status>(array.length());
 			for (int i = 0; i < array.length(); i++)
 				status.add(new Status(array.getJSONObject(i)));
-		} catch (JSONException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
 		return status;
 
