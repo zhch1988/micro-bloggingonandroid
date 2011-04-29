@@ -83,6 +83,7 @@ public class Friends_Timeline {
 			e.printStackTrace();
 		}
 		Log.v("code", hr.getStatusLine().getStatusCode() + "");
+		result = null;
 		if (200 == hr.getStatusLine().getStatusCode()) {
 			try {
 				Log.v("getStatusLine", "OK");
@@ -121,16 +122,23 @@ public class Friends_Timeline {
 	 * @return ·µ»ØList<Status>
 	 * @throws JSONException
 	 */
-	public List<Status> getFriends_Timeline() throws JSONException {
+	public List<Status> getFriends_Timeline()  {
 
-		JSONArray data = new JSONArray(result);
-		int size = data.length();
-		List<Status> sta = new ArrayList<Status>(size);
-		for (int i = 0; i < size; i++) {
-			sta.add(new Status(data.getJSONObject(i)));
-			Log.v("sta", sta.get(i).toString());
+		JSONArray data;
+		try {
+			data = new JSONArray(result);
+			int size = data.length();
+			List<Status> sta = new ArrayList<Status>(size);
+			for (int i = 0; i < size; i++) {
+				sta.add(new Status(data.getJSONObject(i)));
+				Log.v("sta", sta.get(i).toString());
+			}
+			return sta;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		return null;
 		}
-		return sta;
+	
 
 	}
 }
