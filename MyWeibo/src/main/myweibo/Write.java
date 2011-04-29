@@ -2,19 +2,25 @@ package main.myweibo;
 
 import main.logic.Update_status_go;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Write extends Activity {
 	ImageButton writeOK;
 	ImageButton addtrend;
 	ImageButton mention;
+	ImageButton addimage;
 	EditText text;
+	String picpath=null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +78,38 @@ public class Write extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				text.append("@");
+			}
+			
+		});
+		
+		/**
+		 * addimage按钮，添加微博图片
+		 */
+		addimage = (ImageButton) this.findViewById(R.id.im2);
+		addimage.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				String[] selections = {"本地图片", "拍照上传"};
+				AlertDialog.Builder builder = new AlertDialog.Builder(Write.this);
+				builder.setTitle("请选择图片来源");
+				builder.setItems(selections, new DialogInterface.OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						if(which == 0){
+							Log.v("v", "files");
+							
+						}else{
+							Log.v("v", "photos");
+						}
+					}
+					
+				});
+				AlertDialog selectiondialog = builder.create();
+				selectiondialog.show();
 			}
 			
 		});
