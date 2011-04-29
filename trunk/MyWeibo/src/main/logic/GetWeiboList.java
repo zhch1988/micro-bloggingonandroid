@@ -15,6 +15,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 
@@ -69,6 +70,7 @@ public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 			Log.v("Get weibo LIST", "OK");
 		}
 		else{
+			Toast.makeText(context, "获取微博列表失败，请刷新", Toast.LENGTH_SHORT).show();
 			Log.v("Get weibo LIST", "ERROR");
 		}
 		//super.onPostExecute(result);
