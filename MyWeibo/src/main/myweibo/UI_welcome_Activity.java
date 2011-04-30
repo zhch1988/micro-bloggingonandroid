@@ -19,7 +19,7 @@ public class UI_welcome_Activity extends Activity {
 		// 背景自动适应
 		AndroidHelper
 				.AutoBackground(this, layout, R.drawable.bg, R.drawable.bg);
-		//检查数据库
+		//检查数据库和网络
 		new CheckDB(this).execute();
 	}
 
