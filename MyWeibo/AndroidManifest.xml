@@ -12,9 +12,10 @@
 					android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="AuthorizeActivity" android:launchMode="singleTask">
+		<activity android:name="AuthorizeActivity" 
+		android:launchMode="singleTask">
 			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.VIEW"></action>
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="myapp" android:host="AuthorizeActivity" />
