@@ -20,7 +20,6 @@ public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 	WeiboListAdapter adapter;
 	Bitmap[][] bitmaps;
 	List<weibo.constant.Status> publish_status;
-	
 	public GetWeiboList(Activity context){
 		this.context = context;
 		this.bitmaps = new Bitmap[new Integer(Constant.weibocount)][3];
