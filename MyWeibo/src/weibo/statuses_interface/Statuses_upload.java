@@ -12,16 +12,16 @@ import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,6 +39,7 @@ public class Statuses_upload {
 	 * @return
 	 */
 	public Status uploadStatus(String statusText, String fileName) {
+		System.setProperty("Debug", "1");
 		Status status = null;
 		String url = "http://api.t.sina.com.cn/statuses/upload.json";
 		HttpPost post = new HttpPost(url);
@@ -68,7 +69,7 @@ public class Statuses_upload {
 		Log.v("File ", "exit" + file.exists());
 //		StringBody source;
 //		StringBody statusTemp;
-		ContentBody cbFile = new FileBody(file, "image/jpeg");
+		FileBody cbFile = new FileBody(file, "image/jpeg");
 //		try {
 //			source = new StringBody(Constant.consumerKey);
 //			statusTemp = new StringBody(statusText);
@@ -82,16 +83,28 @@ public class Statuses_upload {
 		HttpClient hc = new DefaultHttpClient();
 		HttpResponse rp = null;
 		//
-		hc.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+		//hc.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 		try {
 			System.out.println("executing request " + post.getRequestLine());
 			rp = hc.execute(post);
+			HttpEntity resEntity = rp.getEntity();
+
+		    System.out.println(rp.getStatusLine());
+		    if (resEntity != null) {
+		      System.out.println(EntityUtils.toString(resEntity));
+		    }
+		    if (resEntity != null) {
+		      resEntity.consumeContent();
+		    }
+
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+		Log.v("statuscode", rp.getStatusLine().getStatusCode()+"");
+		Log.v("StatusLine", rp.getStatusLine().toString()+"");
 		if (200 == rp.getStatusLine().getStatusCode()) {
 			try {
 				InputStream is = rp.getEntity().getContent();
