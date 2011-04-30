@@ -2,15 +2,16 @@ package main.logic;
 
 import main.myweibo.Login;
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 
 public class CheckDB extends AsyncTask<Void, Void, DataHelper> {
 	
-	private Context context;
+	private Activity context;
 	
-	public CheckDB(Context context){
+	public CheckDB(Activity context){
 		this.context = context;
 	}
 	
@@ -26,14 +27,16 @@ public class CheckDB extends AsyncTask<Void, Void, DataHelper> {
 	protected void onPostExecute(DataHelper result) {
 		// TODO Auto-generated method stub
 		//开启Login界面
-		
+		//检测数据库
 		result.Close();
 		Intent intent = new Intent();
 		intent.setClass(context, Login.class);
 		context.startActivity(intent);
-		((Activity)context).finish();
+		context.finish();
 		
 	}
+	
+	
 
 
 
