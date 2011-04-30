@@ -6,7 +6,9 @@ import java.util.List;
 import main.logic.StatusHelper;
 import weibo.constant.Status;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,7 @@ public class WeiboListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		convertView = LayoutInflater.from(act.getApplicationContext()).inflate(
+		convertView = LayoutInflater.from(act).inflate(
 				R.layout.list_item, null);
 
 		ImageView iv = (ImageView) convertView.findViewById(R.id.usericon);
@@ -69,12 +71,16 @@ public class WeiboListAdapter extends BaseAdapter {
 			iv_1.setImageBitmap(bmiddle_pic);
 			// 设置信息
 			tv.setText(aStatus.getUser_Author().getName());
+			
 //			tv_1.setText(aStatus.getText());
 			//设置高亮
 			tv_1.setText(new StatusHelper(act, aStatus.getText()).getReplaced());
+			tv_1.setMovementMethod(LinkMovementMethod.getInstance());
+			
 			if(aStatus.getRetweeted_status()!=null){	
 				iv_3.setImageBitmap(retweet_image);
-	            tv_3.setText(aStatus.getRetweeted_status().getUser_Author().getName()+":"+aStatus.getRetweeted_status().getText());
+	            tv_3.setText(new StatusHelper(act,"@"+aStatus.getRetweeted_status().getUser_Author().getName()+":"+aStatus.getRetweeted_status().getText()).getReplaced());
+	            tv_3.setMovementMethod(LinkMovementMethod.getInstance());
 	            ll.setVisibility(View.VISIBLE);
 				}
 			Date te=new Date(Date.parse(aStatus.getCreated_at()));
