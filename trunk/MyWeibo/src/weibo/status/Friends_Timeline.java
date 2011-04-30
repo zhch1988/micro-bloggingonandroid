@@ -85,8 +85,9 @@ public class Friends_Timeline {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Log.v("code", hr.getStatusLine().getStatusCode() + "");
+//		Log.v("code", hr.getStatusLine().getStatusCode() + "");
 		result = null;
+		try{
 		if (200 == hr.getStatusLine().getStatusCode()) {
 			try {
 				Log.v("getStatusLine", "OK");
@@ -117,6 +118,9 @@ public class Friends_Timeline {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 
