@@ -2,6 +2,7 @@ package main.logic;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -11,13 +12,13 @@ import android.widget.ImageView;
 
 public class InitLogin extends AsyncTask<Void, Void, UserInfo> {
 
-	Context context;
+	Activity context;
 	List<UserInfo> userList;
 	String select_Name;
 	ImageView icon;
 	EditText iconSelect;
 
-	public InitLogin(Context context, String select_Name, ImageView icon,
+	public InitLogin(Activity context, String select_Name, ImageView icon,
 			EditText iconSelect) {
 		this.context = context;
 		this.select_Name = select_Name;
@@ -28,6 +29,7 @@ public class InitLogin extends AsyncTask<Void, Void, UserInfo> {
 	@Override
 	protected UserInfo doInBackground(Void... params) {
 		// TODO Auto-generated method stub
+		//初始化开始
 		DataHelper dbHelper = new DataHelper(context);
 		userList = dbHelper.GetUserList();
 		dbHelper.Close();
