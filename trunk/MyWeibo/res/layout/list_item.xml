@@ -51,6 +51,9 @@
   android:layout_height="wrap_content"
   android:textColor="#424952"
   android:textSize="13px"
+  android:textColorLink="#7B68EE"
+  android:autoLink="all"
+   android:linksClickable="true"
  >
   </TextView>
     <ImageView
@@ -75,6 +78,9 @@
   android:layout_height="wrap_content"
   android:textColor="#424952"
   android:textSize="13px"
+    android:textColorLink="#7B68EE"
+  android:autoLink="all"
+  android:linksClickable="true"
  >
   </TextView>
     <ImageView
