@@ -26,6 +26,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class OAuth {
 	private CommonsHttpOAuthConsumer httpOauthConsumer;
@@ -44,7 +46,7 @@ public class OAuth {
 		this.consumerSecret = consumerSecret;
 	}
 
-	public Boolean RequestAccessToken(Activity activity, String callBackUrl) {
+	public Boolean RequestAccessToken(final Activity activity, String callBackUrl) {
 		Boolean ret = false;
 		try {
 			httpOauthConsumer = new CommonsHttpOAuthConsumer(consumerKey,
@@ -55,8 +57,31 @@ public class OAuth {
 					"http://api.t.sina.com.cn/oauth/authorize");
 			String authUrl = httpOauthprovider.retrieveRequestToken(
 					httpOauthConsumer, callBackUrl);
-			activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-					.parse(authUrl)));
+			WebView browser=(WebView)activity.findViewById(R.id.webkit);
+			browser.getSettings().setJavaScriptEnabled (true);
+			
+			browser.setWebViewClient(new WebViewClient(){
+
+				@Override
+				public boolean shouldOverrideUrlLoading(WebView view, String url) {
+					// TODO Auto-generated method stub
+					if(url.startsWith("myapp:")){
+						Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
+						activity.startActivity(i);
+						
+					}
+					else{
+						view.loadUrl(url);
+					}
+			        return true;
+					
+					
+				}
+				
+			}	
+			);
+			browser.loadUrl(authUrl);
+//			activity.startActivity(new Intent(Intent.ACTION_VIEW, ));
 			ret = true;
 		} catch (Exception e) {
 		}
