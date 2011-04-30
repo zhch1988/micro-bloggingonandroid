@@ -2,23 +2,28 @@
 <FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+  android:layout_height="fill_parent"
+  android:background="@drawable/bg">
  <RelativeLayout
  android:layout_width="fill_parent"
  android:layout_height="fill_parent"
- android:background="@drawable/darkgray">
+ >
   <include
   layout="@layout/main"
+  android:id="@+id/main"
        android:visibility="visible"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@+id/toolbarLayout"
   ></include>
   <include
    layout="@layout/ziliao"
+   android:id="@+id/ziliao"
    android:visibility="gone"
    android:layout_width="fill_parent"
         android:layout_height="fill_parent"
    ></include>
+   
        <LinearLayout
         android:id="@+id/toolbarLayout"
         android:layout_width="fill_parent"
