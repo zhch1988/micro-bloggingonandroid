@@ -13,7 +13,7 @@ public class Constant {
 	public static String userKey = null;
 	public static String userSecret = null;
 	// add by wangjing
-	public static String weibocount = "20";
+	public static String weibocount = "5";
 	public static String page = "1";
 	public static String[] type = { "face", "ani", "cartoon" };
 	public static String[] language = { "cnname", "twname" };
