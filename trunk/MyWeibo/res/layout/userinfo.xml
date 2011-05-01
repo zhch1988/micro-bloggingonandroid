@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/layout"
-  android:orientation="vertical"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+  android:layout_height="fill_parent"
+  android:background="@drawable/bg">
   <ImageView
+  android:id="@+id/logo"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@drawable/icon"
@@ -13,8 +14,11 @@
     android:layout_marginLeft="5dip">
   </ImageView>
   <RelativeLayout
+  android:id="@+id/ReContainer"
+  android:layout_below="@+id/logo"
+  android:layout_above="@+id/barLayout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/iconBtn"
             android:layout_width="90px"
@@ -48,97 +52,108 @@
             </EditText>
             <ImageButton 
             android:id="@+id/iconSelectBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="32px"
             android:layout_height="wrap_content" 
             android:layout_marginRight="1.0dip"
             android:layout_alignTop="@+id/iconSelect"
             android:layout_alignRight="@+id/iconSelect"
             android:layout_alignBottom="@+id/iconSelect"
-            android:background="@drawable/down" >
+            android:src="@drawable/ic_menu_forward"
+            android:background="@drawable/darkgray" >
             </ImageButton>
             <ImageButton 
             android:id="@+id/login"
-            android:layout_width="40px"
+            android:layout_width="32px"
             android:layout_height="40px" 
-            android:layout_marginLeft="5dip"
             android:layout_alignTop="@+id/iconSelectBtn"
             android:layout_toRightOf="@+id/iconSelectBtn"
             android:layout_alignBottom="@+id/iconSelectBtn"
-            android:background="@drawable/ic_menu_forward" >
+            android:src="@drawable/down"
+            android:background="@drawable/darkgray" >
             </ImageButton>
         </RelativeLayout>
-        
+          </RelativeLayout>
         <RelativeLayout
+        android:id="@+id/barLayout"
         android:layout_width="fill_parent"
-        android:layout_height="44dip"
+        android:layout_height="45px"
         android:layout_alignParentBottom="true"
-        android:background="#BB768e95">
-            <LinearLayout
-            android:id="@+id/addLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:layout_marginTop="3px">
-            <ImageButton
-            android:id="@+id/addIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/add_selector">
-            </ImageButton>
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="12px"
-            android:text="添加账号">
-            </TextView>
-            </LinearLayout>
-            <LinearLayout
-            android:id="@+id/exitLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:layout_marginTop="3px">
-            <ImageButton
-            android:id="@+id/exitIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/exit_selector">
-            </ImageButton>
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="12px"
-            android:text="退出软件">
-            </TextView>
-            </LinearLayout>
-            <LinearLayout
-            android:id="@+id/delLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:layout_marginTop="3px">
-            <ImageButton
-            android:id="@+id/delIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/delicon">
-            </ImageButton>
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="12px"
-            android:text="删除账号">
-            </TextView>
-            </LinearLayout>
-        </RelativeLayout>
-  </RelativeLayout>
-</LinearLayout>
+        android:background="@drawable/darkgray">
+        <RelativeLayout
+        android:id="@+id/addIconLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+		<ImageButton
+			android:id="@+id/addIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="0.0dip"
+			android:src="@drawable/add_selector"
+			android:background="@drawable/darkgray"
+			>
+		</ImageButton>
+		<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@+id/addIcon"
+		android:layout_centerInParent="true"
+		android:textColor="#1E1E1E"
+		android:textSize="13px"
+		android:text="add new"></TextView>
+		</RelativeLayout>
+	  <RelativeLayout
+	  android:id="@+id/exitIconLayout"
+	  android:layout_toRightOf="@+id/addIconLayout"
+        android:layout_toLeftOf="@+id/delLayout"
+         android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+				<ImageButton
+			android:id="@+id/exitIcon"
+          
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="0.0dip"
+			android:src="@drawable/exit_selector"
+			android:background="@drawable/darkgray"
+			>
+		</ImageButton>
+			<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@+id/exitIcon"
+		android:layout_centerInParent="true"
+		android:textColor="#1E1E1E"
+		android:textSize="13px"
+		android:text="exit"></TextView>
+			</RelativeLayout>
+				  <RelativeLayout
+	  android:id="@+id/delLayout"
+       android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+				<ImageButton
+			android:id="@+id/exitIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="0.0dip"
+			android:src="@drawable/delicon"
+			android:background="@drawable/darkgray"
+			>
+		</ImageButton>
+			<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@+id/exitIcon"
+		android:layout_centerInParent="true"
+		android:textColor="#1E1E1E"
+		android:textSize="13px"
+		android:text="delete"></TextView>
+			</RelativeLayout>
+			   </RelativeLayout>
+
+</RelativeLayout>
