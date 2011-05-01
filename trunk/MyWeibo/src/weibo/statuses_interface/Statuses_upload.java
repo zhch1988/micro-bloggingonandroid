@@ -2,26 +2,20 @@ package weibo.statuses_interface;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-import oauth.signpost.exception.OAuthCommunicationException;
-import oauth.signpost.exception.OAuthExpectationFailedException;
-import oauth.signpost.exception.OAuthMessageSignerException;
+import oauth.signpost.OAuthConsumer;
+import oauth.signpost.basic.DefaultOAuthConsumer;
+import oauth.signpost.http.HttpParameters;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,112 +28,79 @@ public class Statuses_upload {
 	/**
 	 * 发表图片微博消息
 	 * 
-	 * 王晓龙更改于4月29号
+	 * 王晓龙更改于5月1号
 	 * @param statusText
 	 * @return
 	 */
 	public Status uploadStatus(String statusText, String fileName) {
 		System.setProperty("Debug", "1");
 		Status status = null;
-		String url = "http://api.t.sina.com.cn/statuses/upload.json";
-		HttpPost post = new HttpPost(url);
-		post.getParams().setBooleanParameter(
-				CoreProtocolPNames.USE_EXPECT_CONTINUE, false);
-		CommonsHttpOAuthConsumer choc = new CommonsHttpOAuthConsumer(
-				Constant.consumerKey, Constant.consumerSecret);
-		choc.setTokenWithSecret(Constant.userKey, Constant.userSecret);
-		/*
-		 * wangxiaolong
-		 */
-		post.getParams().setParameter("source", Constant.consumerKey);
-		post.getParams().setParameter("status", statusText);
-		
-		
+		String url;
 		try {
-			choc.sign(post);
-		} catch (OAuthMessageSignerException e) {
-			e.printStackTrace();
-		} catch (OAuthExpectationFailedException e) {
-			e.printStackTrace();
-		} catch (OAuthCommunicationException e) {
-			e.printStackTrace();
-		}
-		MultipartEntity entity = new MultipartEntity();
-		File file = new File(fileName);
-		Log.v("File ", "exit" + file.exists());
-//		StringBody source;
-//		StringBody statusTemp;
-		FileBody cbFile = new FileBody(file, "image/jpeg");
-//		try {
-//			source = new StringBody(Constant.consumerKey);
-//			statusTemp = new StringBody(statusText);
-//			entity.addPart("source", source);
-//			entity.addPart("status", statusTemp);
-			entity.addPart("pic", cbFile);
-			post.setEntity(entity);
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-		HttpClient hc = new DefaultHttpClient();
-		HttpResponse rp = null;
-		//
-		//hc.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-		try {
-			System.out.println("executing request " + post.getRequestLine());
-			rp = hc.execute(post);
-			HttpEntity resEntity = rp.getEntity();
-
-		    System.out.println(rp.getStatusLine());
-		    if (resEntity != null) {
-		      System.out.println(EntityUtils.toString(resEntity));
-		    }
-		    if (resEntity != null) {
-		      resEntity.consumeContent();
-		    }
-
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		Log.v("statuscode", rp.getStatusLine().getStatusCode()+"");
-		Log.v("StatusLine", rp.getStatusLine().toString()+"");
-		if (200 == rp.getStatusLine().getStatusCode()) {
-			try {
-				InputStream is = rp.getEntity().getContent();
-				Reader reader = new BufferedReader(new InputStreamReader(is),
-						4000);
-				StringBuilder buffer = new StringBuilder((int) rp.getEntity()
-						.getContentLength());
-				try {
-					char[] tmp = new char[1024];
-					int l;
-					while ((l = reader.read(tmp)) != -1) {
-						buffer.append(tmp, 0, l);
-					}
-				} finally {
-					reader.close();
-				}
-				String string = buffer.toString();// 将buffer转为json可以支持的String类型
-				rp.getEntity().consumeContent(); // 销毁rp
-
-				// 解析json ???有没有其他方法不要这么多try not found
-				try {
-					JSONObject jStatus = new JSONObject(string);
-					if (jStatus != null) {
-						status = Analyse2Status.json2Status(jStatus);
-					}
-				} catch (JSONException e) {
-					Log.v("Error", "15");
-					e.printStackTrace();
-				}
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+			url = "http://api.t.sina.com.cn/statuses/upload.json";		
+			OAuthConsumer choc = new DefaultOAuthConsumer(
+					Constant.consumerKey, Constant.consumerSecret);
+			choc.setTokenWithSecret(Constant.userKey, Constant.userSecret);
+			URL url1 = new URL("http://api.t.sina.com.cn/statuses/upload.json");
+	    	HttpURLConnection request = (HttpURLConnection) url1.openConnection();
+	    	request.setDoOutput(true);
+	    	request.setRequestMethod("POST");
+	    	HttpParameters para = new HttpParameters();
+	    	String status1 = URLEncoder.encode(statusText,"UTF-8").replaceAll("\\+", "%20");
+	    	para.put("status", status1);
+	    	String boundary = "---------------------------37531613912423";
+	    	String content = "--"+boundary+"\r\nContent-Disposition: form-data; name=\"status\"\r\n\r\n";
+			String pic = "\r\n--"+boundary+"\r\nContent-Disposition: form-data; name=\"pic\"; filename=\"postpic.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n";
+	    	byte[] end_data = ("\r\n--" + boundary + "--\r\n").getBytes();  
+	    	File f = new File(fileName);
+			FileInputStream stream = new FileInputStream(f);
+			byte[] file = new byte[(int)f.length()];
+			stream.read(file);
+			request.setRequestProperty("Connection", "Keep-Alive");
+			request.setRequestProperty("Content-Type", "multipart/form-data; boundary="+boundary); //设置表单类型和分隔符  
+		//	request.setRequestProperty("Content-Length", String.valueOf(content.getBytes().length+"test".getBytes().length+pic.getBytes().length+f.length()+end_data.length)); //设置内容长度  
+			choc.setAdditionalParameters(para);
+			choc.sign(request);
+	        OutputStream ot = request.getOutputStream();
+	        ot.write(content.getBytes());
+	        ot.write(status1.getBytes());
+	        ot.write(pic.getBytes());
+	        ot.write(file);
+	        ot.write(end_data);
+	        ot.flush();
+	        ot.close();
+	    	System.out.println("Sending request...");
+	    	request.connect();
+	    	System.out.println("Response: " + request.getResponseCode() + " "
+	    			+ request.getResponseMessage());
+			BufferedReader reader =new BufferedReader(new InputStreamReader(request.getInputStream()));
+			String b = null;
+			String jstring = null;
+			while((b = reader.readLine())!=null){
+				System.out.println(b);
+				jstring = b; 
 			}
-		}
-		return status;
+			if (200 == request.getResponseCode()) {
+					request.disconnect();
+					// 解析json ???有没有其他方法不要这么多try not found
+				
+						JSONObject jStatus = new JSONObject(jstring);
+						if (jStatus != null) {
+							status = Analyse2Status.json2Status(jStatus);
+						}
+						return status;
+					
+		} 
+			return null;
+		
+		
+		
+	}catch (Exception e) {
+		Log.v("Error", "15");
+		e.printStackTrace();
+		return null;
 	}
+	
+	}
+	
 }
