@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/layout"
+  android:orientation="vertical"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:background="@drawable/bg">
+  >
+  <RelativeLayout
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  >
   <ImageView
   android:id="@+id/logo"
     android:layout_width="wrap_content"
@@ -155,5 +160,5 @@
 		android:text="delete"></TextView>
 			</RelativeLayout>
 			   </RelativeLayout>
-
 </RelativeLayout>
+</LinearLayout>
