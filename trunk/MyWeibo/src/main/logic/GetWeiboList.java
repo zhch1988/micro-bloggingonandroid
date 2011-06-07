@@ -89,33 +89,6 @@ public class GetWeiboList extends AsyncTask<Void, Void, Integer> {
 				adapter = new WeiboListAdapter(this.publish_status,this.context,this.bitmaps);
 				ListView listview = (ListView) context.findViewById(R.id.Msglist);
 				listview.setAdapter(adapter);
-				listview.setClickable(true);
-				listview.setOnItemClickListener(new OnItemClickListener(){
-
-					@Override
-					public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-							long arg3) {
-						// TODO Auto-generated method stub
-						Bundle bund=new Bundle();
-						weibo.constant.Status listStatus=(weibo.constant.Status)arg0.getAdapter().getItem(arg2);
-						String user_Name=listStatus.getUser_Author().getName();
-						bund.putString("user_Name", user_Name);
-						String  user_Text=listStatus.getText();
-						bund.putString("user_Text",user_Text);
-						String user_bumpic=listStatus.getUser_Author().getProfile_image_url();
-						bund.putString("user_bumpic", user_bumpic);
-						String weibo_pic=listStatus.getBmiddle_pic();
-						bund.putString("weibo_pic", weibo_pic);
-						Intent itemItent=new Intent();
-						itemItent.putExtras(bund);
-						itemItent.setClass(context, WeiboDetail.class);
-						
-						context.startActivity(itemItent);
-						context.finish();
-						//itemItent.putExtra("status", arg0.getAdapter().getItem(arg2))
-					}
-					
-				});
 			}
 			else{
 				adapter.notifyDataSetChanged();

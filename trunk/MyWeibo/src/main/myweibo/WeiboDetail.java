@@ -11,14 +11,10 @@ public class WeiboDetail extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.weibodetail);
-  		Intent intent=this.getIntent();
-  		Bundle bund=intent.getExtras();
   		TextView tv_Name=(TextView)findViewById(R.id.weibozhum);
-  		tv_Name.setText(bund.getString("user_Name"));
+  		tv_Name.setText(Main.aStatus.getUser_Author().getName());
         TextView tv_Text=(TextView)findViewById(R.id.user_weibotext);
-        tv_Text.setText(bund.getString("user_Text"));
-        showpic();
-  		
+        tv_Text.setText(Main.aStatus.getText());
 	}
 
 	private void showpic() {
