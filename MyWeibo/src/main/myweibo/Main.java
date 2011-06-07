@@ -11,11 +11,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class Main extends Activity {
 	ImageButton ButTest;
@@ -80,7 +82,16 @@ public class Main extends Activity {
 		});
 
 		this.getWeiboList();
+	list.setOnItemClickListener(new OnItemClickListener(){
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			// TODO Auto-generated method stub
+			arg0.getAdapter().getItem(arg2);
+		}
 		
+	});
 		//Ë¢ÐÂ½çÃæ
 		refresh = (ImageButton)this.findViewById(R.id.refreshBtn);
 		refresh.setOnClickListener(new OnClickListener(){
