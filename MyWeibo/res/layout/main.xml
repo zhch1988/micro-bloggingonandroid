@@ -6,6 +6,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:background="@drawable/bg"
+ 
   >
   
   <RelativeLayout
@@ -52,7 +53,8 @@
 
   <RelativeLayout
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+   >
   <ListView
         android:id="@+id/Msglist"
         android:layout_width="fill_parent"
@@ -62,6 +64,7 @@
         android:layout_margin="0px"
         android:background="#ffffff"
         android:cacheColorHint="#00000000"
+      
        >
     </ListView>
         <LinearLayout
