@@ -27,6 +27,8 @@
 <activity android:name="Write" android:windowSoftInputMode="adjustResize"></activity>
 <activity android:name="MainMyInfo"></activity>
 <activity android:name="WeiboDetail"></activity>
+<activity android:name="Comment"></activity>
+<activity android:name="Forward"></activity>
 </application>
 
 	<uses-permission android:name="android.permission.INTERNET">
