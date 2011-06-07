@@ -1,11 +1,13 @@
 package main.myweibo;
 
+import weibo.constant.Status;
 import main.logic.GetMainMyInfo;
 import main.logic.GetWeiboList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -51,6 +53,7 @@ public class Main extends Activity {
 			}
 
 		});
+
 		write.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -82,16 +85,7 @@ public class Main extends Activity {
 		});
 
 		this.getWeiboList();
-	list.setOnItemClickListener(new OnItemClickListener(){
-
-		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-				long arg3) {
-			// TODO Auto-generated method stub
-			arg0.getAdapter().getItem(arg2);
-		}
-		
-	});
+	
 		//Ë¢ÐÂ½çÃæ
 		refresh = (ImageButton)this.findViewById(R.id.refreshBtn);
 		refresh.setOnClickListener(new OnClickListener(){
