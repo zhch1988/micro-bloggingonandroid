@@ -65,26 +65,45 @@ public class Main extends Activity {
 			}
 
 		});
-		//郑璨             获得用户个人资料： 关注 微博 粉丝 话题
-		
+		// 郑璨 获得用户个人资料： 关注 微博 粉丝 话题
+		//Zheng Chen
+
 		mainMyInfo = (ImageButton) this.findViewById(R.id.main_my_info);
 		mainMyInfo.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-            
-			l1.setVisibility(l1.GONE);
-			l2.setVisibility(l2.VISIBLE);
-			TextView address = (TextView) findViewById(R.id.tvAddress_content);
-			TextView accountInfo = (TextView)findViewById(R.id.tvAccount_info_content);
-			TextView friendsCount = (TextView) findViewById(R.id.tvAttention_count);
-			TextView statusesCount = (TextView)findViewById(R.id.tvWeibo_count);
-			TextView followersCount = (TextView)findViewById(R.id.tvFans_count);
-			TextView topic = (TextView) findViewById(R.id.tvTopic_count);
-			new GetMainMyInfo(Main.this,address,accountInfo,friendsCount,statusesCount,followersCount,topic).execute();
+
+				l1.setVisibility(l1.GONE);
+				l2.setVisibility(l2.VISIBLE);
+				TextView address = (TextView) findViewById(R.id.tvAddress_content);
+				TextView accountInfo = (TextView) findViewById(R.id.tvAccount_info_content);
+				TextView friendsCount = (TextView) findViewById(R.id.tvAttention_count);
+				TextView statusesCount = (TextView) findViewById(R.id.tvWeibo_count);
+				TextView followersCount = (TextView) findViewById(R.id.tvFans_count);
+				TextView topic = (TextView) findViewById(R.id.tvTopic_count);
+				new GetMainMyInfo(Main.this, address, accountInfo,
+						friendsCount, statusesCount, followersCount, topic)
+						.execute();
+
+				LinearLayout rlWeibo = (LinearLayout) Main.this
+						.findViewById(R.id.rlWeibo);
+				rlWeibo.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Log.v("myweibo", "clicked");
+						Intent intent = new Intent();
+						intent.setClass(Main.this, MyWeiboList.class);
+						Main.this.startActivity(intent);
+					}
+
+				});
 			}
 		});
 
 		this.getWeiboList();
+
 
 		//王晓龙  详细微博
 		list.setOnItemClickListener(new OnItemClickListener(){
