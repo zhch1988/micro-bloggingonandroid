@@ -10,14 +10,18 @@ import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
 
-
+/**
+ * 
+ * @author Zheng Chen
+ *
+ */
 public class StatusHelper {
 
 	private SpannableStringBuilder replaced;
 
 	/**
 	 * 
-	 * @return
+	 * @return 经过高亮处理后的status用于显示
 	 */
 	public SpannableStringBuilder getReplaced() {
 		return replaced;

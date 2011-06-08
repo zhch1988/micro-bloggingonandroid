@@ -2,12 +2,28 @@ package main.logic;
 
 import weibo.constant.Constant;
 import weibo.constant.User;
+import weibo.trends_interface.Trends;
 import weibo.user_interface.Users_show;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
 
-public class GetMainMyInfo extends AsyncTask<Void, Void, User> {
+public class GetMainMyInfo extends AsyncTask<Void, Void, GetMainMyInfo.Infounion> {
+	
+	class Infounion{
+		private User user;
+		private int trend_count;
+		public User getUser() {
+			return user;
+		}
+		public int getTrend_count() {
+			return trend_count;
+		}
+		public Infounion(User user, int trend_count){
+			this.user = user;
+			this.trend_count = trend_count;
+		}
+	}
 	
 	Context context;
 	User user; 
@@ -29,23 +45,25 @@ public class GetMainMyInfo extends AsyncTask<Void, Void, User> {
 	}
 
 	@Override
-	protected User doInBackground(Void... params) {
+	protected Infounion doInBackground(Void... params) {
 		// TODO Auto-generated method stub
 		Users_show userShow = new Users_show();
 		user = userShow.getUserInfoByUId(Constant.user_id);
-		return user;
+		Trends trend = new Trends();
+		Infounion info = new Infounion(user, trend.getTrendlist().size());
+		return info;
 	}
 	
 	@Override
-	protected void onPostExecute(User user) {
+	protected void onPostExecute(Infounion info) {
 		// TODO Auto-generated method stub
 		if (user != null && !isCancelled()) {
-			address.setText(user.getLocation());
-			accountInfo.setText(user.getName());
-			friendsCount.setText(user.getFriends_count());
-			statusesCount.setText(user.getStatuses_count());
-			followersCount.setText(user.getFollowers_count());
-			topic.setText("0");
+			address.setText(info.getUser().getLocation());
+			accountInfo.setText(info.getUser().getName());
+			friendsCount.setText(info.getUser().getFriends_count());
+			statusesCount.setText(info.getUser().getStatuses_count());
+			followersCount.setText(info.getUser().getFollowers_count());
+			topic.setText(info.getTrend_count()+"");
 		}
 	}
 }

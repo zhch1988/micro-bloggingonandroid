@@ -43,7 +43,8 @@
   </RelativeLayout>
               <RelativeLayout android:id="@+id/rlDigest"
                 android:background="@drawable/panel_bg" android:layout_width="fill_parent"
-                android:layout_height="100.0dip" android:layout_margin="10.0dip">
+                android:layout_height="100.0dip" android:layout_margin="10.0dip"
+               >
                 <TextView android:textSize="16.0sp" android:textColor="#ff7d899d"
                     android:gravity="center_vertical" android:id="@+id/tvAddress"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -81,6 +82,7 @@
                     android:layout_width="fill_parent" android:layout_height="1.0dip"
                     android:layout_centerVertical="true" />
                 <RelativeLayout android:id="@+id/llAttention"
+                 
                     android:background="@drawable/bg_panel_above_left"
                     android:clickable="true" android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:layout_toLeftOf="@+id/vVDivider1"
@@ -115,6 +117,7 @@
                       />
                 </LinearLayout>
                 <LinearLayout android:orientation="vertical"
+                 
                     android:id="@+id/llFans" android:background="@drawable/bg_panel_below_left"
                     android:clickable="true" android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:layout_toLeftOf="@id/vVDivider1"
@@ -131,6 +134,7 @@
                         />
                 </LinearLayout>
                 <LinearLayout android:orientation="vertical"
+                 
                     android:id="@+id/llTopic" android:background="@drawable/bg_panel_below_right"
                     android:clickable="true" android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:layout_toRightOf="@id/vVDivider1"

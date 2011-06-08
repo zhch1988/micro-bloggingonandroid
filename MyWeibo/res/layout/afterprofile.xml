@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/aplayout"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/bg"
+  >
+  
+  <RelativeLayout
+  android:layout_width="fill_parent"
+  android:layout_height="38px"
+  android:layout_margin="3px"
+  >
+  <ImageView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:src="@drawable/icon">
+  </ImageView>
+  <TextView
+  android:id="@+id/apName"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_centerInParent="true"
+  android:text="@string/title"
+  android:textColor="#343434"
+  android:textSize="15px">
+  </TextView>
+  <ImageButton
+  android:id="@+id/revertBtn"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignParentRight="true"
+  android:layout_marginLeft="12px"
+  android:background="@drawable/ic_menu_revert">
+  </ImageButton>
+  </RelativeLayout>
+  
+  <LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="5px"
+  android:background="@drawable/haha">
+  </LinearLayout>
+
+  <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+  <ListView
+        android:id="@+id/apMsglist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#f1f2f2"
+        android:dividerHeight="1px"
+        android:layout_margin="0px"
+        android:background="#ffffff"
+        android:cacheColorHint="#00000000"
+       >
+    </ListView>
+        <LinearLayout
+        android:id="@+id/aploadingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_centerInParent="true">
+            <ProgressBar
+            android:id="@+id/aploading"
+            android:layout_width="31px"
+            android:layout_height="31px"
+            android:layout_gravity="center"
+           >
+            </ProgressBar>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在载入"
+            android:textSize="12px"
+            android:textColor="#9c9c9c"
+            android:layout_gravity="center"
+            android:layout_below="@+id/loading">
+            </TextView>
+        </LinearLayout>
+
+  </RelativeLayout>
+  
+</LinearLayout>
