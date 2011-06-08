@@ -1,14 +1,16 @@
 package main.myweibo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import main.logic.StatusHelper;
 import weibo.constant.Status;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,8 +85,16 @@ public class WeiboListAdapter extends BaseAdapter {
 	            tv_3.setMovementMethod(LinkMovementMethod.getInstance());
 	            ll.setVisibility(View.VISIBLE);
 				}
-			Date te=new Date(Date.parse(aStatus.getCreated_at()));
-			tv_2.setText(te.getMonth()+"月"+te.getDay()+"日"+" "+te.getHours()+":"+te.getMinutes());
+			
+			String date = aStatus.getCreated_at();
+			
+			 SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy",Locale.US);
+			  Date d=sdf.parse(date);
+
+			  sdf=new SimpleDateFormat("MM月dd日 HH时mm分ss秒 ");
+			Log.v("Created_at",aStatus.getCreated_at());
+			Log.v("Date",sdf.format(d));
+			tv_2.setText(sdf.format(d));
 
 
 		} catch (Exception e) {

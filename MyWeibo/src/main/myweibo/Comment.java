@@ -36,16 +36,25 @@ public class Comment extends Activity {
 				if(cb.isChecked()){
 					//转发
 					Status_repost sr =new Status_repost();
-					sr.repostStatus(Main.aStatus.getSId(),tv_Comment.getText().toString(),"1");
-					Toast.makeText(Comment.this, "评论并发送成功", Toast.LENGTH_SHORT).show();
-					Comment.this.finish();
+					if(sr.repostStatus(Main.aStatus.getSId(),tv_Comment.getText().toString(),"1")!=null){
+						Toast.makeText(Comment.this, "评论并发送成功", Toast.LENGTH_SHORT).show();
+						Comment.this.finish();
+					}
+					else{
+						Toast.makeText(Comment.this, "评论并发送失败", Toast.LENGTH_SHORT).show();
+					}
+					
 				}
 				else{
 					//评论
 					Statuses_comment sc = new Statuses_comment();
-					sc.sendComment(Main.aStatus.getSId(), tv_Comment.getText().toString(), "");
-					Toast.makeText(Comment.this, "评论成功", Toast.LENGTH_SHORT).show();
-					Comment.this.finish();
+					if(sc.sendComment(Main.aStatus.getSId(), tv_Comment.getText().toString(), "")!=null){
+						Toast.makeText(Comment.this, "评论成功", Toast.LENGTH_SHORT).show();
+						Comment.this.finish();
+					}
+					else{
+						Toast.makeText(Comment.this, "评论失败", Toast.LENGTH_SHORT).show();
+					}
 				}
 				
 			}

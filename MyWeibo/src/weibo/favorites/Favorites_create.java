@@ -37,7 +37,11 @@ import android.util.Log;
  */
 
 public class Favorites_create {
-	public Favorites_create(String id) {
+	
+	private String id;
+
+	public int start(){
+
 		// json请求格式
 		// api地址
 		String url = "http://api.t.sina.com.cn/favorites/create.json";
@@ -122,6 +126,7 @@ public class Favorites_create {
 					JSONObject data1 = new JSONObject(status);
 					String source = data1.getString("name");
 					Log.v("source", source);
+					return 1;
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,5 +138,12 @@ public class Favorites_create {
 				e.printStackTrace();
 			}
 		}
+		return 0;
+		
+	}
+	
+	public Favorites_create(String id) {
+		this.id = id;
+		
 	}
 }

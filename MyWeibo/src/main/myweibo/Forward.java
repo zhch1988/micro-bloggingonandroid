@@ -37,16 +37,24 @@ public class Forward extends Activity {
 				if(cb.isChecked()){
 					//转发
 					Status_repost sr =new Status_repost();
-					sr.repostStatus(Main.aStatus.getSId(),tv_Comment.getText().toString(),"1");
-					Toast.makeText(Forward.this, "转发并评论成功", Toast.LENGTH_SHORT).show();
-					Forward.this.finish();
+					if(sr.repostStatus(Main.aStatus.getSId(),tv_Comment.getText().toString(),"1")!=null){
+						Toast.makeText(Forward.this, "转发并评论成功", Toast.LENGTH_SHORT).show();
+						Forward.this.finish();
+					}
+					else{
+						Toast.makeText(Forward.this, "转发并评论失败", Toast.LENGTH_SHORT).show();
+					}
 				}
 				else{
 					//只转发不评论
 					Status_repost sr =new Status_repost();
-					sr.repostStatus(Main.aStatus.getSId(),"".toString(),"1");
-					Toast.makeText(Forward.this, "转发成功", Toast.LENGTH_SHORT).show();
-					Forward.this.finish();
+					if(sr.repostStatus(Main.aStatus.getSId(),"".toString(),"1")!=null){
+						Toast.makeText(Forward.this, "转发成功", Toast.LENGTH_SHORT).show();
+						Forward.this.finish();
+					}
+					else{
+						Toast.makeText(Forward.this, "转发失败", Toast.LENGTH_SHORT).show();
+					}
 				}
 				
 			}

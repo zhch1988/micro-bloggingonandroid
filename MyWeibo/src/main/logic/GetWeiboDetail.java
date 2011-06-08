@@ -26,7 +26,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class GetWeiboDetail extends AsyncTask<Void, Void, Integer> {
 
-	String url;
+	String url = null;
 	Bitmap bitmap;
 	Activity context;
 	Bitmap[] bitmaps;
@@ -46,10 +46,19 @@ public class GetWeiboDetail extends AsyncTask<Void, Void, Integer> {
         url =Main.aStatus.getBmiddle_pic();
         bitmap = main.logic.DataHelper.returnBitMap(url);
         bitmaps[1] = bitmap;
+        
         //转发微博的图片
-        url =Main.aStatus.getRetweeted_status().getBmiddle_pic();
-        bitmap = main.logic.DataHelper.returnBitMap(url);
-        bitmaps[2] = bitmap;
+        weibo.constant.Status retweeted = Main.aStatus.getRetweeted_status();
+        if(retweeted!=null){
+        	url = retweeted.getThumbnail_pic();
+            bitmap = main.logic.DataHelper.returnBitMap(url);
+            bitmaps[2] = bitmap;
+        }
+        else
+        {
+        	bitmaps[2] = null;
+        }
+        
 //        if(bitmaps[0]==null||bitmaps[1]==null||bitmaps[2]==null)
 //        	return 0;
 //        else
@@ -77,8 +86,20 @@ public class GetWeiboDetail extends AsyncTask<Void, Void, Integer> {
 	        tv_Text.setText(new StatusHelper(context, Main.aStatus.getText()).getReplaced());
 	       
 	        //转发微博内容
+	        weibo.constant.Status retweeted = Main.aStatus.getRetweeted_status();
 	        TextView tv_retweet = (TextView)context.findViewById(R.id.retweettext);
-	        tv_retweet.setText(new StatusHelper(context,"@"+Main.aStatus.getRetweeted_status().getUser_Author().getName()+":"+Main.aStatus.getRetweeted_status().getText()).getReplaced());
+	        if(retweeted!=null){
+	        	 
+	        	
+		        tv_retweet.setText(new StatusHelper(context,"@"+Main.aStatus.getRetweeted_status().getUser_Author().getName()+":"+Main.aStatus.getRetweeted_status().getText()).getReplaced());
+	        }
+	        else
+	        {
+	        	tv_retweet.setText("");
+	        }
+	        
+	        
+	       
 		}
 		else{
 			Toast.makeText(context, "获取微博详细信息失败，请刷新", Toast.LENGTH_SHORT).show();

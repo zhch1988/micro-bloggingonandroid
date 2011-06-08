@@ -75,8 +75,13 @@ public class WeiboDetail extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				new Favorites_create(Main.aStatus.getSId());
-				Toast.makeText(WeiboDetail.this, "收藏成功", Toast.LENGTH_SHORT).show();
+				Favorites_create fc = new Favorites_create(Main.aStatus.getSId());
+				if(fc.start()==1){
+					Toast.makeText(WeiboDetail.this, "收藏成功", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Toast.makeText(WeiboDetail.this, "收藏失败", Toast.LENGTH_SHORT).show();
+				}
 				
 			}
         	
